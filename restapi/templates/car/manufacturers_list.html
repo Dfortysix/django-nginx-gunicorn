@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="font-[sans-serif] bg-gray-100">
+      <div class="p-4 mx-auto lg:max-w-7xl sm:max-w-full">
+        <h2 class="text-4xl font-extrabold text-gray-800 mb-12">Car Companies</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-xl:gap-4 gap-6">
+            {% for manu in manufacturers %}
+            <a href="{% url 'cars_list_by_brand' manu.name %}">
+          <div class="bg-white rounded-2xl p-5 cursor-pointer hover:-translate-y-2 transition-all relative">
+            <div class="w-5/6 h-[210px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 md:mb-2 mb-4">
+              <img src="{{manu.image.url}}" alt="Product 1"
+                class="h-full w-full object-contain" />
+            </div>
+
+            <div>
+              <h3 class="text-lg font-extrabold text-gray-800">{{manu.name}}</h3>
+              <h4 class="text-lg text-gray-800 font-bold mt-4">{{manu.country}}</h4>
+              <h4 class="text-lg text-gray-800 font-bold mt-4">{{manu.founded_year}}</h4>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
